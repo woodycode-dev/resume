@@ -8,104 +8,124 @@
     <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; }
+        .tag { @apply bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold; }
+    </style>
 </head>
-<body class="bg-gray-50 text-slate-900" hx-ext="client-side-templates">
+<body class="bg-white text-slate-900" hx-ext="client-side-templates">
 
-    <nav class="sticky top-0 bg-white/80 backdrop-blur-md border-b z-50">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="font-black text-xl tracking-tight text-blue-600">KWON GYUHEE</span>
-            <div class="flex gap-6 text-sm font-bold" hx-target="#content">
-                <button hx-get="data.json" mustache-template="intro-tpl" class="hover:text-blue-600">Intro</button>
-                <button hx-get="data.json" mustache-template="project-tpl" class="hover:text-blue-600">Projects</button>
-                <button hx-get="data.json" mustache-template="skill-tpl" class="hover:text-blue-600">Skills</button>
-            </div>
-        </div>
-    </nav>
+    <div hx-get="data.json" hx-trigger="load" hx-target="this" mustache-template="main-tpl">
+        <div class="h-screen flex items-center justify-center font-bold">포트폴리오 로딩 중...</div>
+    </div>
 
-    <main id="content" class="max-w-4xl mx-auto py-12 px-6">
-        <div hx-get="data.json" hx-trigger="load" mustache-template="intro-tpl"></div>
-    </main>
-
-    <!-- TPL: Intro -->
-    <template id="intro-tpl">
-        <section class="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <header>
-                <h1 class="text-5xl font-black leading-tight mb-6">{{intro.name}}</h1>
-                <p class="text-xl text-slate-600 font-medium">{{intro.role}}</p>
+    <template id="main-tpl">
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto px-6 py-20">
+            
+            <!-- Hero -->
+            <header class="mb-32">
+                <h1 class="text-6xl font-black tracking-tighter mb-4">{{profile.name}}</h1>
+                <p class="text-2xl text-blue-600 font-bold mb-8">{{profile.role}}</p>
+                <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mb-10">{{profile.intro}}</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    {{#profile.strengths}}
+                    <div class="p-4 border rounded-xl bg-slate-50 text-sm font-medium">✓ {{.}}</div>
+                    {{/profile.strengths}}
+                </div>
             </header>
-            <div class="bg-blue-600 text-white p-8 rounded-2xl shadow-xl">
-                <p class="text-lg leading-relaxed opacity-90">{{intro.summary}}</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                {{#intro.strengths}}
-                <div class="flex items-start gap-3 p-4 bg-white rounded-lg border shadow-sm">
-                    <span class="text-blue-500 font-bold">✓</span>
-                    <p class="text-sm font-semibold">{{.}}</p>
-                </div>
-                {{/intro.strengths}}
-            </div>
-            <hr>
-            <h2 class="text-2xl font-bold">Experience</h2>
-            <div class="space-y-8">
-                {{#experiences}}
-                <div class="border-l-2 border-slate-200 pl-6 relative">
-                    <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <h3 class="font-bold text-lg">{{company}}</h3>
-                    <p class="text-sm text-slate-500 mb-2">{{role}} | {{period}}</p>
-                    <p class="text-slate-600">{{desc}}</p>
-                </div>
-                {{/experiences}}
-            </div>
-        </section>
-    </template>
 
-    <!-- TPL: Projects -->
-    <template id="project-tpl">
-        <section class="space-y-8 animate-in fade-in duration-500">
-            <h2 class="text-3xl font-black mb-8">Main Projects</h2>
-            {{#mainProjects}}
-            <div class="bg-white border rounded-2xl p-8 hover:shadow-lg transition">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-slate-800">{{title}}</h3>
-                    <span class="text-sm font-mono text-slate-400">{{period}}</span>
+            <!-- Experience -->
+            <section class="mb-32">
+                <h2 class="text-3xl font-black mb-12 border-b-4 border-slate-900 pb-2 inline-block">Experience</h2>
+                <div class="space-y-12">
+                    {{#experiences}}
+                    <div class="relative pl-8 border-l-2">
+                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-slate-900 rounded-full"></div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-black">{{company}}</h3>
+                            <span class="font-mono text-slate-400">{{period}}</span>
+                        </div>
+                        <p class="font-bold text-blue-600 mb-4">{{position}}</p>
+                        <p class="text-slate-600 leading-relaxed">{{summary}}</p>
+                    </div>
+                    {{/experiences}}
                 </div>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    {{#tags}}
-                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-bold text-slate-600">#{{.}}</span>
-                    {{/tags}}
-                </div>
-                <p class="text-blue-600 text-sm font-bold mb-4 italic">내 기여도: {{contribution}}</p>
-                <ul class="space-y-3">
-                    {{#details}}
-                    <li class="flex gap-2 text-slate-600">
-                        <span class="text-slate-300">•</span> {{.}}
-                    </li>
-                    {{/details}}
-                </ul>
-            </div>
-            {{/mainProjects}}
-        </section>
-    </template>
+            </section>
 
-    <!-- TPL: Skills -->
-    <template id="skill-tpl">
-        <section class="grid md:grid-cols-2 gap-8 animate-in fade-in duration-500">
-            <div class="space-y-4">
-                <h3 class="text-xl font-bold border-b pb-2">Languages & Frameworks</h3>
-                <div class="flex flex-wrap gap-2">
-                    {{#skills.languages}}<span class="bg-white border px-4 py-2 rounded-full shadow-sm">{{.}}</span>{{/skills.languages}}
-                    {{#skills.frameworks}}<span class="bg-blue-50 border border-blue-100 px-4 py-2 rounded-full shadow-sm text-blue-700 font-bold">{{.}}</span>{{/skills.frameworks}}
+            <!-- Major Projects -->
+            <section class="mb-32">
+                <h2 class="text-3xl font-black mb-12 border-b-4 border-slate-900 pb-2 inline-block">Major Projects</h2>
+                <div class="space-y-20">
+                    {{#mainProjects}}
+                    <div>
+                        <div class="flex flex-col md:flex-row justify-between mb-6 border-b pb-4">
+                            <h3 class="text-3xl font-black text-slate-800">0{{id}}. {{title}}</h3>
+                            <span class="text-slate-400 font-mono">{{period}}</span>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-8">
+                            <div class="md:col-span-1 space-y-4">
+                                <div>
+                                    <h4 class="text-xs font-black text-slate-400 mb-2 uppercase">Tech Stack</h4>
+                                    <p class="text-sm font-bold">{{stack}}</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-black text-slate-400 mb-2 uppercase">Contribution</h4>
+                                    <p class="text-sm font-bold text-blue-600">{{contribution}}</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-3">
+                                <ul class="space-y-4">
+                                    {{#details}}
+                                    <li class="flex gap-3 text-slate-700 leading-relaxed">
+                                        <span class="text-blue-500 font-bold">•</span> {{.}}
+                                    </li>
+                                    {{/details}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{/mainProjects}}
                 </div>
-            </div>
-            <div class="space-y-4">
-                <h3 class="text-xl font-bold border-b pb-2">Databases & Infrastructure</h3>
-                <div class="flex flex-wrap gap-2">
-                    {{#skills.databases}}<span class="bg-white border px-4 py-2 rounded-full shadow-sm">{{.}}</span>{{/skills.databases}}
-                    {{#skills.tools}}<span class="bg-slate-50 border px-4 py-2 rounded-full shadow-sm">{{.}}</span>{{/skills.tools}}
-                </div>
-            </div>
-        </section>
-    </template>
+            </section>
 
+            <!-- Other Projects -->
+            <section class="mb-32 bg-slate-50 p-10 rounded-3xl">
+                <h2 class="text-2xl font-black mb-8">Other Projects</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    {{#others}}
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">{{title}}</h4>
+                        <p class="text-sm text-slate-500">{{desc}}</p>
+                    </div>
+                    {{/others}}
+                </div>
+            </section>
+
+            <!-- Skills & Edu -->
+            <section class="grid md:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-2xl font-black mb-8 border-b-2 border-slate-900 pb-2">Tech Stack</h2>
+                    <div class="space-y-6 text-sm">
+                        <p><strong>Languages:</strong> {{skills.languages}}</p>
+                        <p><strong>Frameworks:</strong> {{skills.frameworks}}</p>
+                        <p><strong>Databases:</strong> {{skills.db}}</p>
+                        <p><strong>Tools:</strong> {{skills.tools}}</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-black mb-8 border-b-2 border-slate-900 pb-2">Education & Others</h2>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        {{#education}}<li>• {{.}}</li>{{/education}}
+                    </ul>
+                </div>
+            </section>
+
+            <footer class="mt-40 text-center text-slate-300 text-xs">
+                <p>© 2026 KWON GYUHEE. Built with HTMX, Mustache.js, Tailwind CSS.</p>
+            </footer>
+        </div>
+    </template>
 </body>
 </html>
