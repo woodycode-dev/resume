@@ -1,131 +1,507 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>권규희 | Backend Engineer Portfolio</title>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; }
-        .tag { @apply bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이력서 - 권규희</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #fff;
+      color: #333;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    a { color: #4078c0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+    }
+
+    /* ── LOADING ── */
+    #loading {
+      text-align: center;
+      padding: 80px 0;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* ── H1 ── */
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 8px;
+      white-space: pre-line;
+    }
+
+    /* ── CONTACT LINKS ── */
+    .contact-links {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      list-style: none;
+    }
+    .contact-links li { font-size: 14px; }
+    .contact-links li:not(:last-child)::after {
+      content: ' · ';
+      color: #bbb;
+      margin: 0 4px;
+    }
+
+    /* ── HR ── */
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 48px 0;
+    }
+
+    hr.thin {
+      margin: 28px 0;
+      border-top-color: #eee;
+    }
+
+    /* ── SECTION TITLE (h2) ── */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 32px;
+    }
+
+    /* ── COMPANY BLOCK ── */
+    .company-block { margin-bottom: 52px; }
+    .company-block:last-child { margin-bottom: 0; }
+
+    /* h3 = company name */
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 2px;
+    }
+
+    .company-meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .company-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .company-note {
+      font-size: 13px;
+      color: #aaa;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    /* ── PROJECT BLOCK ── */
+    .project-block {
+      margin-bottom: 36px;
+      padding-left: 16px;
+      border-left: 3px solid #e6eaf0;
+    }
+    .project-block:last-child { margin-bottom: 0; }
+
+    /* h4 = project name */
+    h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 2px;
+    }
+
+    .project-meta {
+      font-size: 13px;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    /* ── LABELS ── */
+    .label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+      margin: 14px 0 6px;
+    }
+
+    /* ── DESCRIPTION ── */
+    .desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 4px;
+    }
+
+    /* ── BULLET LIST ── */
+    ul.bullet {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul.bullet li {
+      font-size: 14px;
+      color: #444;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+      line-height: 1.75;
+    }
+    ul.bullet li::before {
+      content: '*';
+      position: absolute;
+      left: 0;
+      color: #bbb;
+      font-size: 13px;
+      top: 1px;
+    }
+
+    /* ── RESULT ── */
+    .result-line {
+      font-size: 13px;
+      color: #4078c0;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-left: 2px solid #4078c0;
+      background: #f5f8ff;
+    }
+
+    /* ── TECH STACK ── */
+    .tech-stack {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #777;
+    }
+    .tech-stack span { font-weight: 500; color: #555; }
+
+    /* ── SKILLS ── */
+    .skill-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 16px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      align-items: start;
+    }
+    .skill-cat {
+      font-weight: 700;
+      color: #333;
+      padding-top: 1px;
+    }
+    .skill-items { color: #555; }
+
+    /* ── ABOUT ME ── */
+    .about-block { margin-bottom: 24px; }
+    .about-block:last-child { margin-bottom: 0; }
+
+    /* h5 = sub category */
+    h5 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    /* ── OTHER EXP ── */
+    .other-block { margin-bottom: 28px; }
+    .other-block:last-child { margin-bottom: 0; }
+    .other-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 2px;
+    }
+    .other-meta { font-size: 13px; color: #aaa; margin-bottom: 6px; }
+    .other-desc { font-size: 14px; color: #555; }
+
+    /* ── CERTS ── */
+    .cert-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 16px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+    .cert-name { color: #333; font-weight: 500; }
+    .cert-sub { color: #aaa; font-size: 13px; text-align: right; }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .contact-section ul li {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .contact-section ul li::before {
+      content: '* ';
+      color: #bbb;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .wrap { padding: 40px 16px 80px; }
+      h1 { font-size: 1.6rem; }
+      .skill-row { grid-template-columns: 1fr; }
+      .skill-cat { margin-bottom: 2px; }
+      .cert-row { grid-template-columns: 1fr; }
+      .cert-sub { text-align: left; }
+    }
+  </style>
 </head>
-<body class="bg-white text-slate-900" hx-ext="client-side-templates">
+<body>
+<div class="wrap">
+  <div id="loading">데이터를 불러오는 중입니다...</div>
+  <div id="resume" style="display:none;"></div>
+</div>
 
-    <div hx-get="data.json" hx-trigger="load" hx-target="this" mustache-template="main-tpl">
-        <div class="h-screen flex items-center justify-center font-bold">포트폴리오 로딩 중...</div>
-    </div>
+<script>
+  // ── HELPERS ──
+  function esc(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
-    <template id="main-tpl">
-        <!-- Main Content -->
-        <div class="max-w-4xl mx-auto px-6 py-20">
-            
-            <!-- Hero -->
-            <header class="mb-32">
-                <h1 class="text-6xl font-black tracking-tighter mb-4">{{profile.name}}</h1>
-                <p class="text-2xl text-blue-600 font-bold mb-8">{{profile.role}}</p>
-                <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mb-10">{{profile.intro}}</p>
-                <div class="grid md:grid-cols-2 gap-4">
-                    {{#profile.strengths}}
-                    <div class="p-4 border rounded-xl bg-slate-50 text-sm font-medium">✓ {{.}}</div>
-                    {{/profile.strengths}}
-                </div>
-            </header>
+  function tag(tagName, content, cls) {
+    const c = cls ? ` class="${cls}"` : '';
+    return `<${tagName}${c}>${content}</${tagName}>`;
+  }
 
-            <!-- Experience -->
-            <section class="mb-32">
-                <h2 class="text-3xl font-black mb-12 border-b-4 border-slate-900 pb-2 inline-block">Experience</h2>
-                <div class="space-y-12">
-                    {{#experiences}}
-                    <div class="relative pl-8 border-l-2">
-                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-slate-900 rounded-full"></div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-2xl font-black">{{company}}</h3>
-                            <span class="font-mono text-slate-400">{{period}}</span>
-                        </div>
-                        <p class="font-bold text-blue-600 mb-4">{{position}}</p>
-                        <p class="text-slate-600 leading-relaxed">{{summary}}</p>
-                    </div>
-                    {{/experiences}}
-                </div>
-            </section>
+  function ul(items) {
+    if (!items || items.length === 0) return '';
+    return '<ul class="bullet">' + items.map(i => `<li>${esc(i)}</li>`).join('') + '</ul>';
+  }
 
-            <!-- Major Projects -->
-            <section class="mb-32">
-                <h2 class="text-3xl font-black mb-12 border-b-4 border-slate-900 pb-2 inline-block">Major Projects</h2>
-                <div class="space-y-20">
-                    {{#mainProjects}}
-                    <div>
-                        <div class="flex flex-col md:flex-row justify-between mb-6 border-b pb-4">
-                            <h3 class="text-3xl font-black text-slate-800">0{{id}}. {{title}}</h3>
-                            <span class="text-slate-400 font-mono">{{period}}</span>
-                        </div>
-                        <div class="grid md:grid-cols-4 gap-8">
-                            <div class="md:col-span-1 space-y-4">
-                                <div>
-                                    <h4 class="text-xs font-black text-slate-400 mb-2 uppercase">Tech Stack</h4>
-                                    <p class="text-sm font-bold">{{stack}}</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-black text-slate-400 mb-2 uppercase">Contribution</h4>
-                                    <p class="text-sm font-bold text-blue-600">{{contribution}}</p>
-                                </div>
-                            </div>
-                            <div class="md:col-span-3">
-                                <ul class="space-y-4">
-                                    {{#details}}
-                                    <li class="flex gap-3 text-slate-700 leading-relaxed">
-                                        <span class="text-blue-500 font-bold">•</span> {{.}}
-                                    </li>
-                                    {{/details}}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    {{/mainProjects}}
-                </div>
-            </section>
+  // ── RENDERERS ──
 
-            <!-- Other Projects -->
-            <section class="mb-32 bg-slate-50 p-10 rounded-3xl">
-                <h2 class="text-2xl font-black mb-8">Other Projects</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    {{#others}}
-                    <div>
-                        <h4 class="font-bold text-lg mb-1">{{title}}</h4>
-                        <p class="text-sm text-slate-500">{{desc}}</p>
-                    </div>
-                    {{/others}}
-                </div>
-            </section>
+  function renderHeader(data) {
+    const contactLinks = data.contact.map(c =>
+      `<li><a href="${esc(c.url)}">${esc(c.label)}</a></li>`
+    ).join('');
 
-            <!-- Skills & Edu -->
-            <section class="grid md:grid-cols-2 gap-20">
-                <div>
-                    <h2 class="text-2xl font-black mb-8 border-b-2 border-slate-900 pb-2">Tech Stack</h2>
-                    <div class="space-y-6 text-sm">
-                        <p><strong>Languages:</strong> {{skills.languages}}</p>
-                        <p><strong>Frameworks:</strong> {{skills.frameworks}}</p>
-                        <p><strong>Databases:</strong> {{skills.db}}</p>
-                        <p><strong>Tools:</strong> {{skills.tools}}</p>
-                    </div>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-black mb-8 border-b-2 border-slate-900 pb-2">Education & Others</h2>
-                    <ul class="space-y-3 text-sm text-slate-600">
-                        {{#education}}<li>• {{.}}</li>{{/education}}
-                    </ul>
-                </div>
-            </section>
+    return `
+      <h1>${esc(data.greeting)}</h1>
+      <p class="intro">${esc(data.intro)}</p>
+      <ul class="contact-links">${contactLinks}</ul>
+    `;
+  }
 
-            <footer class="mt-40 text-center text-slate-300 text-xs">
-                <p>© 2026 KWON GYUHEE. Built with HTMX, Mustache.js, Tailwind CSS.</p>
-            </footer>
-        </div>
-    </template>
+  function renderProject(proj) {
+    const metaParts = [proj.period, proj.contribution].filter(Boolean);
+    const meta = metaParts.join(' · ');
+
+    let html = `<div class="project-block">`;
+    html += tag('h4', esc(proj.name));
+    if (meta) html += `<p class="project-meta">${esc(meta)}</p>`;
+
+    if (proj.description) {
+      html += `<p class="label">Description.</p>`;
+      html += `<p class="desc">${esc(proj.description)}</p>`;
+    }
+
+    if (proj.whatIDid && proj.whatIDid.length > 0) {
+      html += `<p class="label">What did I do.</p>`;
+      html += ul(proj.whatIDid);
+    }
+
+    if (proj.result) {
+      html += `<div class="result-line">${esc(proj.result)}</div>`;
+    }
+
+    if (proj.techStack && proj.techStack.length > 0) {
+      html += `<p class="tech-stack"><span>Tech Stack.</span> ${proj.techStack.map(esc).join(', ')}</p>`;
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function renderExperiences(experiences) {
+    let html = `<section><h2>Work Experience.</h2>`;
+
+    experiences.forEach((exp, i) => {
+      html += `<div class="company-block">`;
+      html += tag('h3', esc(exp.company));
+      html += `<p class="company-meta">${esc(exp.role)}&nbsp;&nbsp;${esc(exp.period)}</p>`;
+      if (exp.companyDesc) html += `<p class="company-desc">${esc(exp.companyDesc)}</p>`;
+      if (exp.note) html += `<p class="company-note">${esc(exp.note)}</p>`;
+
+      exp.projects.forEach(proj => {
+        html += renderProject(proj);
+      });
+
+      html += '</div>';
+
+      if (i < experiences.length - 1) html += '<hr class="thin">';
+    });
+
+    html += '</section><hr>';
+    return html;
+  }
+
+  function renderOtherExperiences(others) {
+    let html = `<section><h2>Other Experiences.</h2>`;
+
+    others.forEach(item => {
+      html += `<div class="other-block">`;
+      html += `<div class="other-name">${esc(item.name)}.</div>`;
+      const meta = [item.role, item.period].filter(Boolean).join('  ');
+      html += `<div class="other-meta">${esc(meta)}</div>`;
+      if (item.description) {
+        const desc = item.url
+          ? item.description.replace(item.url, `<a href="${esc(item.url)}" target="_blank">${esc(item.url)}</a>`)
+          : esc(item.description);
+        html += `<div class="other-desc">${desc}</div>`;
+      }
+      html += '</div>';
+    });
+
+    html += '</section><hr>';
+    return html;
+  }
+
+  function renderSkills(skills) {
+    let html = `<section><h2>Skills.</h2>`;
+
+    skills.forEach(s => {
+      html += `<div class="skill-row">
+        <div class="skill-cat">${esc(s.category)}.</div>
+        <div class="skill-items">${s.items.map(esc).join(', ')}</div>
+      </div>`;
+    });
+
+    html += '</section><hr>';
+    return html;
+  }
+
+  function renderAboutMe(aboutMe) {
+    let html = `<section><h2>About Me.</h2>`;
+
+    aboutMe.forEach(block => {
+      html += `<div class="about-block">`;
+      html += tag('h5', esc(block.category) + '.');
+      html += ul(block.items);
+      html += '</div>';
+    });
+
+    html += '</section><hr>';
+    return html;
+  }
+
+  function renderCertifications(certs) {
+    let html = `<section><h2>Certifications.</h2>`;
+
+    certs.forEach(c => {
+      html += `<div class="cert-row">
+        <div class="cert-name">${esc(c.name)}</div>
+        <div class="cert-sub">${esc(c.issuer)} · ${esc(c.date)}</div>
+      </div>`;
+    });
+
+    html += '</section><hr>';
+    return html;
+  }
+
+  function renderContact(data) {
+    const items = data.contact.map(c =>
+      `<li><a href="${esc(c.url)}">${esc(c.label)}</a></li>`
+    ).join('');
+
+    return `
+      <section class="contact-section">
+        <h2>Contact.</h2>
+        <ul>${items}</ul>
+      </section>
+    `;
+  }
+
+  function renderFooter(data) {
+    const email = data.contact.find(c => c.label === '이메일');
+    return `
+      <footer>
+        ${esc(data.name)} · <a href="${esc(email ? email.url : '#')}">${esc(email ? email.text : '')}</a>
+      </footer>
+    `;
+  }
+
+  // ── MAIN ──
+  async function loadResume() {
+    try {
+      const res  = await fetch('./resume.json');
+      const data = await res.json();
+
+      const html = [
+        renderHeader(data),
+        '<hr>',
+        renderExperiences(data.experiences),
+        renderOtherExperiences(data.otherExperiences),
+        renderSkills(data.skills),
+        renderAboutMe(data.aboutMe),
+        renderCertifications(data.certifications),
+        renderContact(data),
+        renderFooter(data),
+      ].join('\n');
+
+      document.getElementById('loading').style.display  = 'none';
+      const resume = document.getElementById('resume');
+      resume.innerHTML = html;
+      resume.style.display = 'block';
+
+      // Update page title
+      document.title = `이력서 - ${data.name}`;
+    } catch (err) {
+      document.getElementById('loading').textContent =
+        '⚠️ resume.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인해주세요.';
+      console.error(err);
+    }
+  }
+
+  loadResume();
+</script>
 </body>
 </html>

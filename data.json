@@ -1,97 +1,254 @@
 {
-  "profile": {
-    "name": "권규희",
-    "role": "6년차 백엔드 엔지니어",
-    "intro": "비즈니스를 코드로 풀어온 개발자입니다. C#과 ASP.NET을 주력으로 가상계좌 자동 청구·정산, PG 구독 결제, 실시간 CTI 시스템 등 복잡한 로직을 직접 설계했습니다. 설립 3년 만에 매출 800억 규모로 성장한 스타트업의 핵심 시스템을 2명이서 5년 넘게 구축·운영하며 요구사항을 빠르게 코드로 만들어내는 것에 익숙합니다.",
-    "strengths": [
-      "C# 기반 시스템 설계: ASP.NET 6년 경력의 안정적인 구현 역량",
-      "전기 모빌리티 도메인: Gogoro API 연동 및 충전 스테이션 운영 시스템 구축",
-      "외부 연동 설계: OCR, ERP, PG, 글로벌 API 등 복잡한 인터페이스 연동",
-      "실시간 아키텍처: Node.js WebSocket 기반 실시간 시스템 재설계"
-    ]
-  },
+  "name": "권규희",
+  "title": "6년차 백엔드 엔지니어",
+  "greeting": "반갑습니다, 저는 권규희입니다.",
+  "intro": "C#과 ASP.NET을 주력으로 가상계좌 자동 청구·정산, PG 구독 결제, 실시간 CTI 시스템 등 복잡한 비즈니스 로직을 직접 설계하고 구현해왔습니다. 설립 3년 만에 매출 800억 규모로 성장한 스타트업의 핵심 시스템을 2명이서 5년 넘게 함께 만들고 운영하며, 요구사항을 빠르게 파악해 실제로 동작하는 코드로 만들어내는 것에 익숙합니다.\n\n특히 전기 이륜차 신사업 닷스테이션에서 글로벌 전기 스쿠터 브랜드 Gogoro와의 API 연동, 충전 스테이션 운영 시스템, 구독형 요금제 결제까지 전기 모빌리티 도메인을 직접 경험했습니다.",
+  "contact": [
+    { "label": "이메일",  "url": "mailto:your@email.com",              "text": "your@email.com" },
+    { "label": "블로그",  "url": "https://woodycode.tistory.com",      "text": "woodycode.tistory.com" },
+    { "label": "깃허브",  "url": "https://github.com/kwongyuhee",      "text": "github.com/kwongyuhee" }
+  ],
   "experiences": [
     {
-      "company": "바이크뱅크(주) / 닷스테이션(주)",
-      "period": "2021.01 - 2024.01",
-      "position": "개발팀 책임/차석",
-      "summary": "국내 오토바이 모빌리티 1위. 머니플로우(계약·청구·정산·채권) 전체 백엔드 구현 및 신사업 시스템 0 to 1 구축."
+      "company": "바이크뱅크(주)",
+      "companyDesc": "국내 오토바이 모빌리티 업계 1위, 설립 3년 만에 매출 800억 달성 스타트업",
+      "role": "개발팀 책임/차석",
+      "period": "2021. 01 - 2024. 01",
+      "note": "닷스테이션㈜ - 전기 이륜차 사업 겸직 · 2023. 05 ~ 2024. 01",
+      "projects": [
+        {
+          "name": "바이크 리스·정산 시스템 2차 재개발",
+          "period": "2021. 06 - 2022. 01",
+          "contribution": "2인 · 설계 참여 / FE 80% / BE 80%",
+          "description": "사업 초기 Oracle DB 기반으로 구축된 1차 시스템을 바이크뱅크 자체 MySQL 환경으로 전환하고, 엑셀·수기로 병행 관리되던 리스 계약·정산·채권 업무를 100% 온라인 시스템으로 전면 전환했습니다.",
+          "whatIDid": [
+            "전사 각 부서 미팅을 통해 업무 흐름 파악 및 시스템 요구사항 직접 정의",
+            "Oracle 기반 레거시 데이터를 MySQL로 전량 마이그레이션, 자체 DB 환경으로 통합",
+            "가상계좌 기반 월 렌트료 자동 청구·일차감 구조 설계",
+            "OCR 과태료 자동 인식 시스템 도입으로 수기 입력 업무 제거",
+            "바이크뱅크 ERP 시스템과 정산 데이터 연동 설계 및 구현",
+            "PG 연동 비유상 상품 결제 기능 추가"
+          ],
+          "result": "오프라인·수기 병행 관리 업무 100% 온라인 전환, 수동 정산 오류 감소",
+          "techStack": ["ASP.NET", "C#", "MySQL", "Oracle", "ERP 연동", "OCR", "PG", "IIS"]
+        },
+        {
+          "name": "닷스테이션 관리자 시스템 개발 및 운영",
+          "period": "2023. 05 - 2024. 01",
+          "contribution": "2인 · 설계 참여 / FE 100% / BE 100%",
+          "description": "2023년 5월 바이크뱅크의 전기 이륜차 신사업 닷스테이션 법인이 설립되었습니다. 고고로(Gogoro) 전기 스쿠터 판매·요금제·가맹점 운영을 위한 관리 시스템이 전무한 상태에서, 서비스 오픈과 동시에 운영 가능한 시스템을 0부터 설계하고 구축했습니다.",
+          "whatIDid": [
+            "법인 설립과 동시에 전사 업무 플로우 파악 및 시스템 요구사항 정의, 전체 아키텍처 설계",
+            "고고로(Gogoro) 외부 API 연동으로 전기 스쿠터 차량·용품 정보 실시간 동기화",
+            "카드 1회 등록으로 요금제가 자동 결제되는 PG 기반 구독형 결제 시스템 설계 및 구현",
+            "청구서 발행 → 정산 → 미정산 → 채권 관리로 이어지는 머니플로우 백엔드 구현",
+            "수수료 정책 및 정산 관리, 카드결제 관리 시스템 개발",
+            "대리점·서비스점·총판·스테이션 설치점 가맹점 관리 시스템 구현",
+            "정부보조금 신청 관리 기능 개발"
+          ],
+          "result": "법인 설립 시점에 맞춰 관리 시스템 오픈, 수기 청구 업무 제거 및 정산 자동화 달성",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "HTML/CSS", "MsSQL", "PG 연동", "Gogoro API", "IIS"]
+        },
+        {
+          "name": "고객센터 CTI 시스템 개발 및 운영",
+          "period": "2021. 03 - 2024. 01 (1차 → 2차 리뉴얼)",
+          "contribution": "2인 · 설계 참여 / FE 90% / BE 90%",
+          "description": "1차 CTI 시스템을 직접 개발·운영하면서 HTTP Polling 방식의 구조적 한계를 체감했습니다. 전화 수신 이벤트와 시스템이 연결되지 않아 고객 정보 확인과 상담 이력 실시간 연동이 불가능한 문제를 파악하고, Node.js·WebSocket 기반 실시간 아키텍처로 재설계했습니다.",
+          "whatIDid": [
+            "기존 ASP.NET HTTP Polling 방식의 구조적 한계 파악, Node.js·WebSocket 기반 실시간 아키텍처로 전환",
+            "전화 수신 즉시 고객 정보·리스 계약 내역·상담 이력이 상담사 화면에 자동 표시되도록 설계",
+            "리스·닷스테이션·ERP·PRM 등 내부 시스템 API 통합 연동",
+            "2022.12 리뉴얼: 전화수신내역·고객정보·상담내역을 단일 화면에서 통합 관리하는 구조로 전면 개선"
+          ],
+          "result": "상담사 응대 효율 향상, 상담 데이터 누적으로 통계 분석 기반 마련, 수기 입력 대비 이력 누락 감소",
+          "techStack": ["ASP.NET", "C#", "Node.js", "WebSocket", "JavaScript", "MsSQL", "ERP 연동", "PRM 연동", "IIS"]
+        },
+        {
+          "name": "BBM (Bikebank Membership) 앱 API 개발 및 운영",
+          "period": "2021. 03 - 2024. 01",
+          "contribution": "2인 · 기획 참여 / BE API 100%",
+          "description": "바이크뱅크 완성차 구매 고객과 대행점 직원을 위한 전용 앱 API를 설계하고 개발했습니다. 고객은 구매 차량 정보·정비 이력·쿠폰을 앱에서 직접 확인하고, 대행점 직원은 회원 관리·워런티·정기점검 업무를 모바일에서 처리할 수 있도록 구현했습니다.",
+          "whatIDid": [
+            "일반 고객용 API 개발 — 구매 차량 정보 조회, 쿠폰 사용, 정비 내역 조회, 정비점 지도 조회",
+            "대행점 직원용 API 개발 — 회원 관리, 워런티 관리, 정기점검·클레임 관리",
+            "ERP 연동으로 정기점검·클레임 데이터 실시간 동기화"
+          ],
+          "result": "고객센터 단순 문의 감소, 대행점 직원의 워런티·정기점검 업무 모바일 전환으로 현장 업무 효율 향상",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "MsSQL", "ERP 연동", "IIS"]
+        },
+        {
+          "name": "기타 프로젝트",
+          "period": "2021 - 2024",
+          "contribution": "",
+          "description": "",
+          "whatIDid": [
+            "시승행사 예약 시스템 (2022.07~) — 고고로 시승행사 예약·취소·QR 접수 확인, 관리자 하이브리드 앱 포함",
+            "만기차량 입·출고 관리 앱 (2022.03~) — 만기 렌트 차량 입·출고 현황 및 위치 관제 API",
+            "완성차물류 출고관리 앱 (2022.02~) — 완성차물류팀 차량 출고 프로세스 관리 API",
+            "차량공유 앱 (2021.01~) — 렌트 차량 주문·공유 관리 API, 렌트 계약 조회 연동"
+          ],
+          "result": "",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "MsSQL", "Oracle", "IIS"]
+        }
+      ]
     },
     {
       "company": "인성데이타",
-      "period": "2018.10 - 2021.01",
-      "position": "웹개발팀 사원",
-      "summary": "B2B SaaS 물류 플랫폼. 리스·정산 시스템 1차 설계 및 라이더/보험사 연동 API 개발."
-    }
-  ],
-  "mainProjects": [
-    {
-      "id": "1",
-      "title": "바이크 리스·정산 시스템 2차 재개발",
-      "period": "2021.06 - 2022.01",
-      "stack": "ASP.NET C#, MySQL, Oracle(Mig), ERP 연동, OCR, PG",
-      "contribution": "설계 참여, FE 80%, BE 80%",
-      "details": [
-        "Oracle 기반 레거시 데이터를 MySQL로 전량 마이그레이션 및 단일 DB 통합",
-        "엑셀/수기 병행 업무를 100% 온라인 시스템으로 전면 전환",
-        "가상계좌 기반 월 렌트료 자동 청구 및 일차감 구조 설계",
-        "OCR 과태료 자동 인식 시스템 도입으로 수기 입력 제거"
-      ]
-    },
-    {
-      "id": "2",
-      "title": "닷스테이션 관리자 시스템 개발 및 운영",
-      "period": "2023.05 - 2024.01",
-      "stack": "ASP.NET C#, MsSQL, PG 연동, Gogoro API",
-      "contribution": "설계 참여, FE 100%, BE 100%",
-      "details": [
-        "법인 설립과 동시에 전사 업무 플로우 파악 및 전체 아키텍처 0부터 설계",
-        "Gogoro API 연동으로 전기 스쿠터 차량/용품 정보 실시간 동기화",
-        "카드 1회 등록 기반 PG 구독형 자동결제 시스템 설계 및 구현",
-        "청구서 발행부터 채권 관리까지 이어지는 머니플로우 이식"
-      ]
-    },
-    {
-      "id": "3",
-      "title": "고객센터 CTI 시스템 리뉴얼",
-      "period": "2022.12 - 2024.01",
-      "stack": "Node.js, WebSocket, ASP.NET C#, MSSQL, ERP 연동",
-      "contribution": "설계 참여, FE 90%, BE 90%",
-      "details": [
-        "HTTP Polling 방식의 한계를 Node.js-WebSocket 실시간 아키텍처로 전환",
-        "전화 수신 즉시 고객 정보·리스 계약·상담 이력이 상담사 화면에 자동 팝업",
-        "내부 API 통합 연동으로 상담 데이터 정합성 확보 및 응대 효율 대폭 향상"
-      ]
-    },
-    {
-      "id": "4",
-      "title": "BBM (Bikebank Membership) 앱 API 개발",
-      "period": "2021.03 - 2024.01",
-      "stack": "ASP.NET C#, MSSQL, ERP 연동",
-      "contribution": "기획 참여, BE API 100%",
-      "details": [
-        "일반 고객용(구매·정비·쿠폰 조회) 및 대행점 직원용(회원·워런티 관리) API 설계",
-        "ERP 실시간 동기화로 정기점검 및 클레임 데이터 정합성 확보",
-        "모바일 업무 전환으로 현장 효율성 향상 및 고객센터 문의 감소"
+      "companyDesc": "GPS 기반 물류·운송 IT 플랫폼 전문 기업 · 전국 5천여 회원사 보유 B2B SaaS",
+      "role": "웹개발팀 사원",
+      "period": "2018. 10 - 2021. 01",
+      "note": "바이크뱅크 시스템 개발 겸직 · 2019. 07 ~ 2021. 01",
+      "projects": [
+        {
+          "name": "바이크 리스·정산 시스템 1차 개발 및 운영",
+          "period": "2018. 12 - 2021. 12",
+          "contribution": "3인 · FE/BE 50%",
+          "description": "인성데이타 재직 중 바이크뱅크 법인 설립(2019.07)에 맞춰 리스·정산 시스템을 처음 설계하고 개발했습니다. 이후 바이크뱅크 법인 이직 후 2차 재개발로 전환되었습니다.",
+          "whatIDid": [
+            "이륜차 리스 계약·과금·정산·미정산·과태료 관리 기능 구현",
+            "Oracle 기반 데이터베이스 설계 및 개발"
+          ],
+          "result": "",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "Oracle", "IIS"]
+        },
+        {
+          "name": "바이크 정비·부품 재고 관리 시스템",
+          "period": "2018. 12 - 2021. 12",
+          "contribution": "3인 · FE/BE 70%",
+          "description": "정비점 관리, 차량·부품 마스터 정보 및 재고 관리, 부품 주문, 차량 정비 견적 등록 시스템을 개발하고 운영했습니다. 2021.07 ERP 시스템으로 전환되었습니다.",
+          "whatIDid": [
+            "정비점 관리 및 차량·부품 마스터 정보 관리 시스템 개발",
+            "부품 재고 관리, 부품 주문, 차량 정비 견적 등록 기능 구현"
+          ],
+          "result": "",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "Oracle", "IIS"]
+        },
+        {
+          "name": "보험사 견적 시스템 (TOBIS)",
+          "period": "2020. 12 - 2021. 02",
+          "contribution": "2인 · BE 80%",
+          "description": "DB손해보험 손해사정 시스템을 개발했습니다.",
+          "whatIDid": [
+            "정비수가·견적·정비점·부품 관리 기능 구현"
+          ],
+          "result": "",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "Oracle", "IIS"]
+        },
+        {
+          "name": "라이더 쿠폰·소모품 관리 시스템",
+          "period": "2019. 11 - 2021. 03",
+          "contribution": "3인 · BE 50%",
+          "description": "대리점·협력사 라이더 쿠폰 QR 사용, 소모품 주문, 보험 견적 관리 시스템 및 앱 API를 개발했습니다.",
+          "whatIDid": [
+            "라이더 쿠폰 QR 사용 및 소모품 주문 시스템 개발",
+            "보험 견적 관리 시스템 및 앱 API 개발"
+          ],
+          "result": "",
+          "techStack": ["ASP.NET", "C#", "JavaScript", "Oracle", "IIS"]
+        }
       ]
     }
   ],
-  "others": [
-    {"title": "시승행사 예약 시스템", "desc": "Gogoro 시승 예약·취소·QR 접수 확인 및 알림톡 연동 (FE/BE 100%)"},
-    {"title": "만기차량 입·출고 관리 앱", "desc": "렌트 차량 현황 및 위치 관제 API 개발 (BE 100%)"},
-    {"title": "완성차물류 출고관리 앱", "desc": "물류팀 렌트 차량 출고 프로세스 관리 API 개발 (BE 100%)"},
-    {"title": "보험사 견적 시스템 (TOBIS)", "desc": "DB손해보험 손해사정 시스템 연동 및 정비수가 관리 기능 (BE 80%)"}
+  "otherExperiences": [
+    {
+      "name": "IT 트렌드 기술 블로그",
+      "role": "운영",
+      "period": "2025. 01 - 현재",
+      "description": "woodycode.tistory.com 에서 업무에서 만난 문제, 새롭게 배운 기술, IT 트렌드를 정리해 공유하는 블로그를 운영하고 있습니다.",
+      "url": "https://woodycode.tistory.com"
+    },
+    {
+      "name": "LG Aimers 5기",
+      "role": "수료",
+      "period": "2024. 07 - 2024. 08",
+      "description": "LG AI연구원·고용노동부 주관 AI 교육 과정을 수료했습니다.",
+      "url": ""
+    },
+    {
+      "name": "Java Spring & MyBatis 실무 향상과정",
+      "role": "수료",
+      "period": "2022. 05",
+      "description": "DIP 주관 Java Spring & MyBatis 실무 향상과정을 수료했습니다.",
+      "url": ""
+    },
+    {
+      "name": "AI 학습데이터 활용 아이디어 공모전",
+      "role": "우수상",
+      "period": "2019. 10",
+      "description": "미디어그룹사람과숲 주관 공모전에서 사물인식·증강현실·위치기반 신기술을 활용한 관광 도우미 앱 'Trip Adventure'를 기획·제안하여 우수상을 수상했습니다.",
+      "url": ""
+    },
+    {
+      "name": "영진전문대학교",
+      "role": "컴퓨터정보과 웹데이터베이스학과",
+      "period": "2015. 03 - 2018. 02",
+      "description": "졸업",
+      "url": ""
+    }
   ],
-  "skills": {
-    "languages": ["C#", "JavaScript", "TypeScript", "HTML/CSS"],
-    "frameworks": ["ASP.NET Core", "Node.js", "React", "Next.js"],
-    "db": ["MsSQL", "MySQL", "Oracle"],
-    "tools": ["IIS", "GitLab/GitHub", "Visual Studio", "Notion", "Figma"]
-  },
-  "education": [
-    "영진전문대학교 컴퓨터정보과 웹데이터베이스학과 졸업 (2018)",
-    "SQLD / ADsP / 정보처리기사 자격 보유",
-    "LG Aimers 5기 수료 (AI 연구원)",
-    "IT 트렌드 블로그(woodycode.tistory.com) 운영"
+  "skills": [
+    {
+      "category": "Language",
+      "items": ["C#", "JavaScript", "TypeScript", "HTML/CSS"]
+    },
+    {
+      "category": "Framework & Library",
+      "items": ["ASP.NET (주력)", "Node.js", "React", "Next.js", "WebSocket"]
+    },
+    {
+      "category": "Database",
+      "items": ["MsSQL", "MySQL", "Oracle"]
+    },
+    {
+      "category": "Infrastructure",
+      "items": ["IIS"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Visual Studio", "VS Code", "GitLab / GitHub", "Figma / Zeplin", "Notion"]
+    },
+    {
+      "category": "Integration",
+      "items": ["PG 연동", "Gogoro API", "ERP 연동", "OCR", "가상계좌"]
+    }
+  ],
+  "aboutMe": [
+    {
+      "category": "Overall",
+      "items": [
+        "비즈니스 요구사항을 빠르게 파악하고, 실제로 동작하는 코드로 만들어내는 것을 중요하게 생각합니다.",
+        "소규모 팀(2인)에서 설계부터 개발, 운영까지 전 주기를 직접 경험했습니다.",
+        "복잡한 외부 시스템 연동(PG, ERP, OCR, 글로벌 API) 설계 및 구현 경험이 있습니다.",
+        "항상 최신 기술이 옳다고 여기지 않으며, 상황에 따라 적절한 선택이 있다고 믿습니다."
+      ]
+    },
+    {
+      "category": "Work Style",
+      "items": [
+        "목표 달성도 중요하지만 일의 과정에서 재미를 찾는 편입니다.",
+        "문제가 생겨도 그 상황 안에서 일을 진행할 수 있는 방향을 찾습니다.",
+        "함께 정한 기한은 반드시 지키려고 노력합니다.",
+        "회사와 세상에 긍정적 영향을 주는 일은 그 자체로 동기부여가 됩니다."
+      ]
+    },
+    {
+      "category": "C# / ASP.NET",
+      "items": [
+        "ASP.NET을 주력으로 복잡한 비즈니스 로직을 안정적인 시스템으로 구현한 6년 경력을 보유하고 있습니다.",
+        "가상계좌 기반 자동 청구·정산, PG 구독 결제 등 금융 관련 시스템 설계 경험이 있습니다."
+      ]
+    },
+    {
+      "category": "Database",
+      "items": [
+        "MsSQL, MySQL, Oracle 환경에서의 개발 및 운영 경험이 있습니다.",
+        "Oracle에서 MySQL로의 대용량 데이터 마이그레이션을 수행한 경험이 있습니다."
+      ]
+    }
+  ],
+  "certifications": [
+    { "name": "정보처리기사",          "issuer": "한국산업인력공단",        "date": "2020. 06" },
+    { "name": "SQL 개발자 (SQLD)",     "issuer": "한국산업인력공단",        "date": "2022. 06" },
+    { "name": "데이터분석 준전문가 (ADsP)", "issuer": "한국데이터베이스진흥원", "date": "2022. 06" }
   ]
 }
