@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -28,265 +27,153 @@
 
     /* ── LAYOUT ── */
     .wrap {
-      max-width: 780px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 60px 24px 120px;
+      padding: 64px 24px 120px;
     }
 
     /* ── LOADING ── */
-    #loading {
-      text-align: center;
-      padding: 80px 0;
-      color: #999;
-      font-size: 14px;
-    }
-
-    /* ── H1 ── */
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 12px;
-      color: #111;
-    }
-
-    /* ── INTRO ── */
-    .intro {
-      font-size: 15px;
-      line-height: 1.9;
-      color: #444;
-      margin-bottom: 8px;
-      white-space: pre-line;
-    }
-
-    /* ── CONTACT LINKS ── */
-    .contact-links {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 0;
-      list-style: none;
-    }
-    .contact-links li { font-size: 14px; }
-    .contact-links li:not(:last-child)::after {
-      content: ' · ';
-      color: #bbb;
-      margin: 0 4px;
-    }
+    #loading { text-align: center; padding: 80px 0; color: #999; font-size: 14px; }
 
     /* ── HR ── */
-    hr {
-      border: none;
-      border-top: 1px solid #ddd;
-      margin: 48px 0;
-    }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 52px 0; }
+    hr.sm { margin: 32px 0; border-top-color: #eee; }
 
-    hr.thin {
-      margin: 28px 0;
-      border-top-color: #eee;
-    }
+    /* ─────────────────────────────
+       TYPOGRAPHY SCALE
+    ───────────────────────────── */
+    h1 { font-size: 2rem;   font-weight: 700; line-height: 1.3; color: #111; margin-bottom: 10px; }
+    h2 { font-size: 1.6rem; font-weight: 700; color: #111; margin-bottom: 28px; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #111; margin-bottom: 4px; }
+    h4 { font-size: 1rem;   font-weight: 700; color: #222; margin-bottom: 2px; }
+    h5 { font-size: 0.9rem; font-weight: 700; color: #444; margin-bottom: 8px; }
 
-    /* ── SECTION TITLE (h2) ── */
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 32px;
-    }
+    /* ── SUBTITLE ── */
+    .subtitle { font-size: 1rem; color: #888; margin-bottom: 20px; }
 
-    /* ── COMPANY BLOCK ── */
-    .company-block { margin-bottom: 52px; }
-    .company-block:last-child { margin-bottom: 0; }
+    /* ── INTRO ── */
+    .intro { font-size: 14.5px; line-height: 1.95; color: #444; white-space: pre-line; margin-bottom: 4px; }
 
-    /* h3 = company name */
-    h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 2px;
-    }
+    /* ── CONTACT ── */
+    .contact-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0; margin-top: 16px; }
+    .contact-list li { font-size: 14px; }
+    .contact-list li:not(:last-child)::after { content: ' · '; color: #ccc; margin: 0 4px; }
 
-    .company-meta {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 4px;
-    }
+    /* ── SECTION WRAPPER ── */
+    .section { margin-bottom: 0; }
 
-    .company-desc {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 4px;
-    }
-
-    .company-note {
-      font-size: 13px;
-      color: #aaa;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    /* ── PROJECT BLOCK ── */
-    .project-block {
-      margin-bottom: 36px;
-      padding-left: 16px;
-      border-left: 3px solid #e6eaf0;
-    }
-    .project-block:last-child { margin-bottom: 0; }
-
-    /* h4 = project name */
-    h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 2px;
-    }
-
-    .project-meta {
-      font-size: 13px;
-      color: #aaa;
-      margin-bottom: 12px;
-    }
-
-    /* ── LABELS ── */
-    .label {
-      font-size: 13px;
-      font-weight: 700;
-      color: #555;
-      margin: 14px 0 6px;
-    }
-
-    /* ── DESCRIPTION ── */
-    .desc {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.85;
-      margin-bottom: 4px;
-    }
-
-    /* ── BULLET LIST ── */
-    ul.bullet {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    ul.bullet li {
+    /* ── KEY STRENGTHS & ACHIEVEMENTS ── */
+    .kv-list { list-style: none; padding: 0; margin-bottom: 4px; }
+    .kv-list li {
       font-size: 14px;
       color: #444;
-      padding-left: 16px;
+      padding-left: 18px;
       position: relative;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       line-height: 1.75;
     }
-    ul.bullet li::before {
-      content: '*';
-      position: absolute;
-      left: 0;
-      color: #bbb;
-      font-size: 13px;
-      top: 1px;
-    }
+    .kv-list li::before { content: '·'; position: absolute; left: 4px; color: #aaa; }
+    .kv-list li strong { font-weight: 700; color: #222; }
 
-    /* ── RESULT ── */
-    .result-line {
-      font-size: 13px;
-      color: #4078c0;
-      margin-top: 10px;
-      padding: 5px 10px;
-      border-left: 2px solid #4078c0;
-      background: #f5f8ff;
+    /* ── EXPERIENCE BLOCK ── */
+    .exp-block { margin-bottom: 48px; }
+    .exp-block:last-child { margin-bottom: 0; }
+
+    .exp-header { margin-bottom: 16px; }
+    .exp-meta { font-size: 13px; color: #888; margin-bottom: 2px; }
+    .exp-note { font-size: 13px; color: #aaa; font-style: italic; margin-bottom: 14px; }
+
+    /* ── BULLET LIST ── */
+    ul.bul { list-style: none; padding: 0; margin: 0; }
+    ul.bul li {
+      font-size: 14px; color: #444;
+      padding-left: 18px; position: relative;
+      margin-bottom: 5px; line-height: 1.75;
     }
+    ul.bul li::before { content: '*'; position: absolute; left: 2px; color: #bbb; font-size: 12px; top: 2px; }
 
     /* ── TECH STACK ── */
-    .tech-stack {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #777;
+    .tech { font-size: 13px; color: #888; margin-top: 12px; }
+    .tech b { color: #555; font-weight: 600; }
+
+    /* ── PROJECT BLOCK (Main Projects) ── */
+    .proj-block { margin-bottom: 52px; }
+    .proj-block:last-child { margin-bottom: 0; }
+
+    .proj-period { font-size: 13px; color: #aaa; margin-bottom: 2px; }
+    .proj-team   { font-size: 13px; color: #aaa; margin-bottom: 20px; }
+
+    .proj-label {
+      font-size: 13px; font-weight: 700;
+      color: #444; margin: 16px 0 6px;
     }
-    .tech-stack span { font-weight: 500; color: #555; }
+    .proj-desc { font-size: 14px; color: #555; line-height: 1.85; }
+
+    /* ── OTHER PROJECTS ── */
+    .other-company { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 16px; }
+
+    .other-item { margin-bottom: 24px; }
+    .other-item:last-child { margin-bottom: 0; }
+    .other-name { font-size: 14.5px; font-weight: 700; color: #222; margin-bottom: 1px; }
+    .other-meta { font-size: 13px; color: #aaa; margin-bottom: 5px; }
+    .other-desc { font-size: 14px; color: #555; line-height: 1.8; }
 
     /* ── SKILLS ── */
     .skill-row {
       display: grid;
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 180px 1fr;
       gap: 0 16px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 14px;
-      align-items: start;
     }
-    .skill-cat {
-      font-weight: 700;
-      color: #333;
-      padding-top: 1px;
-    }
-    .skill-items { color: #555; }
+    .skill-cat { font-weight: 700; color: #333; }
+    .skill-val { color: #555; }
 
-    /* ── ABOUT ME ── */
-    .about-block { margin-bottom: 24px; }
-    .about-block:last-child { margin-bottom: 0; }
+    /* ── EDUCATION ── */
+    .edu-block { margin-bottom: 28px; }
+    .edu-school { font-size: 14.5px; font-weight: 700; color: #222; }
+    .edu-sub    { font-size: 13.5px; color: #666; }
 
-    /* h5 = sub category */
-    h5 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 8px;
-    }
-
-    /* ── OTHER EXP ── */
-    .other-block { margin-bottom: 28px; }
-    .other-block:last-child { margin-bottom: 0; }
-    .other-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 2px;
-    }
-    .other-meta { font-size: 13px; color: #aaa; margin-bottom: 6px; }
-    .other-desc { font-size: 14px; color: #555; }
-
-    /* ── CERTS ── */
     .cert-row {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 0 16px;
-      font-size: 14px;
+      gap: 0 12px;
       margin-bottom: 8px;
+      font-size: 14px;
       align-items: baseline;
     }
-    .cert-name { color: #333; font-weight: 500; }
-    .cert-sub { color: #aaa; font-size: 13px; text-align: right; }
+    .cert-name { color: #333; }
+    .cert-meta { font-size: 12px; color: #aaa; text-align: right; white-space: nowrap; }
+    .cert-note { font-size: 13px; color: #888; margin-top: 2px; padding-left: 1em; }
+
+    .act-row { margin-bottom: 8px; font-size: 14px; color: #444; }
+    .act-row span { color: #aaa; font-size: 13px; }
+
+    /* ── HOW I WORK ── */
+    .how-list { list-style: none; padding: 0; }
+    .how-list li {
+      font-size: 14px; color: #444;
+      padding-left: 18px; position: relative;
+      margin-bottom: 5px; line-height: 1.75;
+    }
+    .how-list li::before { content: '*'; position: absolute; left: 2px; color: #bbb; font-size: 12px; top: 2px; }
 
     /* ── CONTACT SECTION ── */
-    .contact-section ul {
-      list-style: none;
-      padding: 0;
-    }
-    .contact-section ul li {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-    .contact-section ul li::before {
-      content: '* ';
-      color: #bbb;
-    }
+    .contact-sec ul { list-style: none; padding: 0; }
+    .contact-sec ul li { font-size: 14px; margin-bottom: 6px; }
+    .contact-sec ul li::before { content: '* '; color: #bbb; }
 
     /* ── FOOTER ── */
-    footer {
-      margin-top: 60px;
-      padding-top: 24px;
-      border-top: 1px solid #ddd;
-      font-size: 12px;
-      color: #bbb;
-    }
+    footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #bbb; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .wrap { padding: 40px 16px 80px; }
       h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
       .skill-row { grid-template-columns: 1fr; }
-      .skill-cat { margin-bottom: 2px; }
-      .cert-row { grid-template-columns: 1fr; }
-      .cert-sub { text-align: left; }
+      .cert-row  { grid-template-columns: 1fr; }
+      .cert-meta { text-align: left; }
     }
   </style>
 </head>
@@ -297,211 +184,202 @@
 </div>
 
 <script>
-  // ── HELPERS ──
-  function esc(str) {
-    if (!str) return '';
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
+/* ── 유틸 ── */
+function e(s){ if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function bul(arr){ return '<ul class="bul">'+arr.map(i=>`<li>${e(i)}</li>`).join('')+'</ul>'; }
+function kvbul(arr){ return '<ul class="kv-list">'+arr.map(i=>`<li><strong>${e(i.title)}</strong>: ${e(i.desc)}</li>`).join('')+'</ul>'; }
+function techLine(arr){ return `<p class="tech"><b>Tech Stack.</b> ${arr.map(e).join(' · ')}</p>`; }
 
-  function tag(tagName, content, cls) {
-    const c = cls ? ` class="${cls}"` : '';
-    return `<${tagName}${c}>${content}</${tagName}>`;
-  }
+/* ── 섹션별 렌더러 ── */
 
-  function ul(items) {
-    if (!items || items.length === 0) return '';
-    return '<ul class="bullet">' + items.map(i => `<li>${esc(i)}</li>`).join('') + '</ul>';
-  }
+function renderHeader(d){
+  const links = d.contact.map(c=>`<li><a href="${e(c.url)}">${e(c.label)}</a></li>`).join('');
+  return `
+    <h1>${e(d.greeting)}</h1>
+    <p class="subtitle">${e(d.subtitle)}</p>
+    <p class="intro">${e(d.intro)}</p>
+    <ul class="contact-list">${links}</ul>
+  `;
+}
 
-  // ── RENDERERS ──
+function renderIntroduce(d){
+  const strengths = kvbul(d.keyStrengths);
+  const ach = '<ul class="kv-list">'+d.achievements.map(a=>`<li><strong>${e(a.title)}</strong>: ${e(a.desc)}</li>`).join('')+'</ul>';
+  return `
+    <section class="section">
+      <h2>Introduce.</h2>
+      <h3>핵심 역량.</h3>
+      ${strengths}
+      <br>
+      <h3>주요 성과.</h3>
+      ${ach}
+    </section>
+  `;
+}
 
-  function renderHeader(data) {
-    const contactLinks = data.contact.map(c =>
-      `<li><a href="${esc(c.url)}">${esc(c.label)}</a></li>`
-    ).join('');
+function renderExperiences(exps){
+  let html = `<section class="section"><h2>Experiences.</h2>`;
+  exps.forEach((exp, i)=>{
+    html += `<div class="exp-block">
+      <div class="exp-header">
+        <h3>${e(exp.company)}</h3>
+        <p class="exp-meta">${e(exp.role)}&nbsp;&nbsp;${e(exp.period)}</p>
+        <p class="exp-meta">${e(exp.companyDesc)}</p>
+        ${exp.note ? `<p class="exp-note">(${e(exp.note)})</p>` : ''}
+      </div>
+      ${bul(exp.bullets)}
+      ${techLine(exp.techStack)}
+    </div>`;
+    if(i < exps.length-1) html += '<hr class="sm">';
+  });
+  html += '</section>';
+  return html;
+}
 
-    return `
-      <h1>${esc(data.greeting)}</h1>
-      <p class="intro">${esc(data.intro)}</p>
-      <ul class="contact-links">${contactLinks}</ul>
-    `;
-  }
+function renderMainProjects(projs){
+  let html = `<section class="section"><h2>Main Projects.</h2>`;
+  projs.forEach((p, idx)=>{
+    html += `<div class="proj-block">
+      <h3>${idx+1}. ${e(p.name)}</h3>
+      <p class="proj-period">${e(p.period)}</p>
+      <p class="proj-team">${e(p.team)}</p>
 
-  function renderProject(proj) {
-    const metaParts = [proj.period, proj.contribution].filter(Boolean);
-    const meta = metaParts.join(' · ');
+      <p class="proj-label">배경</p>
+      <p class="proj-desc">${e(p.background)}</p>
 
-    let html = `<div class="project-block">`;
-    html += tag('h4', esc(proj.name));
-    if (meta) html += `<p class="project-meta">${esc(meta)}</p>`;
+      <p class="proj-label">해결</p>
+      ${bul(p.whatIDid)}
 
-    if (proj.description) {
-      html += `<p class="label">Description.</p>`;
-      html += `<p class="desc">${esc(proj.description)}</p>`;
-    }
+      <p class="proj-label">결과</p>
+      ${bul(p.result)}
 
-    if (proj.whatIDid && proj.whatIDid.length > 0) {
-      html += `<p class="label">What did I do.</p>`;
-      html += ul(proj.whatIDid);
-    }
+      ${techLine(p.techStack)}
+    </div>`;
+    if(idx < projs.length-1) html += '<hr class="sm">';
+  });
+  html += '</section>';
+  return html;
+}
 
-    if (proj.result) {
-      html += `<div class="result-line">${esc(proj.result)}</div>`;
-    }
-
-    if (proj.techStack && proj.techStack.length > 0) {
-      html += `<p class="tech-stack"><span>Tech Stack.</span> ${proj.techStack.map(esc).join(', ')}</p>`;
-    }
-
-    html += '</div>';
-    return html;
-  }
-
-  function renderExperiences(experiences) {
-    let html = `<section><h2>Work Experience.</h2>`;
-
-    experiences.forEach((exp, i) => {
-      html += `<div class="company-block">`;
-      html += tag('h3', esc(exp.company));
-      html += `<p class="company-meta">${esc(exp.role)}&nbsp;&nbsp;${esc(exp.period)}</p>`;
-      if (exp.companyDesc) html += `<p class="company-desc">${esc(exp.companyDesc)}</p>`;
-      if (exp.note) html += `<p class="company-note">${esc(exp.note)}</p>`;
-
-      exp.projects.forEach(proj => {
-        html += renderProject(proj);
-      });
-
-      html += '</div>';
-
-      if (i < experiences.length - 1) html += '<hr class="thin">';
-    });
-
-    html += '</section><hr>';
-    return html;
-  }
-
-  function renderOtherExperiences(others) {
-    let html = `<section><h2>Other Experiences.</h2>`;
-
-    others.forEach(item => {
-      html += `<div class="other-block">`;
-      html += `<div class="other-name">${esc(item.name)}.</div>`;
-      const meta = [item.role, item.period].filter(Boolean).join('  ');
-      html += `<div class="other-meta">${esc(meta)}</div>`;
-      if (item.description) {
-        const desc = item.url
-          ? item.description.replace(item.url, `<a href="${esc(item.url)}" target="_blank">${esc(item.url)}</a>`)
-          : esc(item.description);
-        html += `<div class="other-desc">${desc}</div>`;
-      }
-      html += '</div>';
-    });
-
-    html += '</section><hr>';
-    return html;
-  }
-
-  function renderSkills(skills) {
-    let html = `<section><h2>Skills.</h2>`;
-
-    skills.forEach(s => {
-      html += `<div class="skill-row">
-        <div class="skill-cat">${esc(s.category)}.</div>
-        <div class="skill-items">${s.items.map(esc).join(', ')}</div>
+function renderOtherProjects(others){
+  let html = `<section class="section"><h2>Other Projects.</h2>`;
+  Object.entries(others).forEach(([company, items], ci)=>{
+    html += `<p class="other-company">${e(company)}.</p>`;
+    items.forEach((item, ii)=>{
+      html += `<div class="other-item">
+        <p class="other-name">${ii+1}. ${e(item.name)}</p>
+        <p class="other-meta">${e(item.period)}</p>
+        <p class="other-meta">${e(item.team)}</p>
+        <p class="other-desc">${e(item.desc)}</p>
       </div>`;
     });
+    if(ci < Object.keys(others).length-1) html += '<hr class="sm">';
+  });
+  html += '</section>';
+  return html;
+}
 
-    html += '</section><hr>';
-    return html;
+function renderSkills(skills){
+  let html = `<section class="section"><h2>Skills.</h2>`;
+  Object.entries(skills).forEach(([cat, val])=>{
+    html += `<div class="skill-row"><div class="skill-cat">${e(cat)}</div><div class="skill-val">${e(val)}</div></div>`;
+  });
+  html += '</section>';
+  return html;
+}
+
+function renderEducation(edu){
+  let html = `<section class="section"><h2>Education.</h2>`;
+
+  /* 학력 */
+  html += `<h3 style="font-size:1rem;font-weight:700;color:#444;margin-bottom:12px;">학력</h3>`;
+  edu.degree.forEach(d=>{
+    html += `<div class="edu-block">
+      <p class="edu-school">${e(d.school)}</p>
+      <p class="edu-sub">${e(d.major)} · ${e(d.period)}</p>
+    </div>`;
+  });
+
+  /* 자격/어학/수상 */
+  html += `<hr class="sm"><h3 style="font-size:1rem;font-weight:700;color:#444;margin-bottom:12px;">자격/어학/수상</h3>`;
+  edu.certifications.forEach(c=>{
+    html += `<div class="cert-row">
+      <div class="cert-name">${e(c.name)}</div>
+      <div class="cert-meta">${e(c.issuer)} · ${e(c.date)}</div>
+    </div>`;
+    if(c.note) html += `<p class="cert-note">→ ${e(c.note)}</p>`;
+  });
+
+  /* 기타 활동 */
+  html += `<hr class="sm"><h3 style="font-size:1rem;font-weight:700;color:#444;margin-bottom:12px;">기타 활동</h3>`;
+  edu.activities.forEach(a=>{
+    const nameStr = a.url ? `<a href="${e(a.url)}" target="_blank">${e(a.name)}</a>` : e(a.name);
+    html += `<p class="act-row">${nameStr} · <span>${e(a.org)} · ${e(a.period)}</span></p>`;
+  });
+
+  html += '</section>';
+  return html;
+}
+
+function renderHowIWork(items){
+  return `
+    <section class="section">
+      <h2>How i work ?</h2>
+      <ul class="how-list">${items.map(i=>`<li>${e(i)}</li>`).join('')}</ul>
+    </section>
+  `;
+}
+
+function renderContact(d){
+  const items = d.contact.map(c=>`<li><a href="${e(c.url)}">${e(c.label)}</a></li>`).join('');
+  return `<section class="section contact-sec"><h2>Contact.</h2><ul>${items}</ul></section>`;
+}
+
+function renderFooter(d){
+  const em = d.contact.find(c=>c.label==='이메일');
+  return `<footer>${e(d.name)} · <a href="${e(em?em.url:'#')}">${e(em?em.text:'')}</a></footer>`;
+}
+
+/* ── MAIN ── */
+async function load(){
+  try {
+    const res  = await fetch('./resume.json');
+    const d    = await res.json();
+
+    const sections = [
+      renderHeader(d),
+      '<hr>',
+      renderIntroduce(d),
+      '<hr>',
+      renderExperiences(d.experiences),
+      '<hr>',
+      renderMainProjects(d.mainProjects),
+      '<hr>',
+      renderOtherProjects(d.otherProjects),
+      '<hr>',
+      renderSkills(d.skills),
+      '<hr>',
+      renderEducation(d.education),
+      '<hr>',
+      renderHowIWork(d.howIWork),
+      '<hr>',
+      renderContact(d),
+      renderFooter(d),
+    ];
+
+    document.getElementById('loading').style.display = 'none';
+    const root = document.getElementById('resume');
+    root.innerHTML = sections.join('\n');
+    root.style.display = 'block';
+    document.title = d.pageTitle || `이력서 - ${d.name}`;
+  } catch(err) {
+    document.getElementById('loading').textContent =
+      '⚠️ resume.json을 불러오지 못했습니다. 같은 폴더에 파일이 있는지 확인해주세요. (로컬 실행 시 Live Server 사용 필요)';
+    console.error(err);
   }
+}
 
-  function renderAboutMe(aboutMe) {
-    let html = `<section><h2>About Me.</h2>`;
-
-    aboutMe.forEach(block => {
-      html += `<div class="about-block">`;
-      html += tag('h5', esc(block.category) + '.');
-      html += ul(block.items);
-      html += '</div>';
-    });
-
-    html += '</section><hr>';
-    return html;
-  }
-
-  function renderCertifications(certs) {
-    let html = `<section><h2>Certifications.</h2>`;
-
-    certs.forEach(c => {
-      html += `<div class="cert-row">
-        <div class="cert-name">${esc(c.name)}</div>
-        <div class="cert-sub">${esc(c.issuer)} · ${esc(c.date)}</div>
-      </div>`;
-    });
-
-    html += '</section><hr>';
-    return html;
-  }
-
-  function renderContact(data) {
-    const items = data.contact.map(c =>
-      `<li><a href="${esc(c.url)}">${esc(c.label)}</a></li>`
-    ).join('');
-
-    return `
-      <section class="contact-section">
-        <h2>Contact.</h2>
-        <ul>${items}</ul>
-      </section>
-    `;
-  }
-
-  function renderFooter(data) {
-    const email = data.contact.find(c => c.label === '이메일');
-    return `
-      <footer>
-        ${esc(data.name)} · <a href="${esc(email ? email.url : '#')}">${esc(email ? email.text : '')}</a>
-      </footer>
-    `;
-  }
-
-  // ── MAIN ──
-  async function loadResume() {
-    try {
-      const res  = await fetch('./resume.json');
-      const data = await res.json();
-
-      const html = [
-        renderHeader(data),
-        '<hr>',
-        renderExperiences(data.experiences),
-        renderOtherExperiences(data.otherExperiences),
-        renderSkills(data.skills),
-        renderAboutMe(data.aboutMe),
-        renderCertifications(data.certifications),
-        renderContact(data),
-        renderFooter(data),
-      ].join('\n');
-
-      document.getElementById('loading').style.display  = 'none';
-      const resume = document.getElementById('resume');
-      resume.innerHTML = html;
-      resume.style.display = 'block';
-
-      // Update page title
-      document.title = `이력서 - ${data.name}`;
-    } catch (err) {
-      document.getElementById('loading').textContent =
-        '⚠️ resume.json 파일을 불러오지 못했습니다. 파일이 같은 폴더에 있는지 확인해주세요.';
-      console.error(err);
-    }
-  }
-
-  loadResume();
+load();
 </script>
 </body>
 </html>
