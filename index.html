@@ -83,8 +83,8 @@
     /* ════════════ Experiences 2컬럼 ════════════ */
     .exp-row {
       display: grid;
-      grid-template-columns: 21rem 1fr;
-      gap: 0 5.2rem;
+      grid-template-columns: 19rem 1fr;
+      gap: 0 3.0rem;
       margin-bottom: 4rem;
     }
     .exp-row:last-child { margin-bottom: 0; }
@@ -94,7 +94,7 @@
     .co-name .dot { color: var(--blue); }
     .exp-role-line { font-size: 1.6rem; color: var(--muted); margin-bottom: 2px; }
     .exp-period    { font-size: 1.6rem; color: var(--light); margin-bottom: 0.5rem; }
-    .exp-note      { font-size: 1.6rem; color: var(--faint); font-style: italic; line-height: 1.7; }
+    .exp-note      { font-size: 1.4rem; color: var(--faint); font-style: italic; line-height: 1.7; }
     .exp-co-desc   { font-size: 1.6rem; color: var(--light); margin-bottom: 1.2rem; }
 
     /* ════════════ Main Projects 1컬럼 ════════════ */
@@ -527,7 +527,8 @@ function renderContact(lines){
 /* Footer */
 function renderFooter(name, contacts){
   const em = contacts.find(c=>c.label==='이메일');
-  return `<footer>${name} · ${em ? `<a href="${em.url}">${em.text}</a>` : ''}</footer>`;
+  // return `<footer>${name} · ${em ? `<a href="${em.url}">${em.text}</a>` : ''}</footer>`;
+  return "";
 }
 
 /* ════════════════════════════════════════════
